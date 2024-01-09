@@ -1,0 +1,6 @@
+#no request needed
+---
+#response
+float32 d #distance from the target
+float32 ave_v_x #average velocity along x
+float32 ave_v_z #average velocity along z

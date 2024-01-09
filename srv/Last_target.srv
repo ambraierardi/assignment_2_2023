@@ -1,0 +1,5 @@
+#no request needed
+---
+#response
+float32 x #x coordinate of the last target
+float32 y #y coordinate of the last target
