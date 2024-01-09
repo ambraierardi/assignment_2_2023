@@ -12,12 +12,12 @@ import actionlib.msg
 
 def callback(msg):
     global pub
-    pub=Custom()
-    pub.x = msg.pose.pose.position.x
-    pub.y = msg.pose.pose.position.y
-    pub.v_x = msg.twist.twist.linear.x
-    pub.v_z = msg.twist.twist.angular.z
-    pub.publish(pub)
+    new_msg=Custom()
+    new_msg.x = msg.pose.pose.position.x
+    new_msg.y = msg.pose.pose.position.y
+    new_msg.v_x = msg.twist.twist.linear.x
+    new_msg.v_z = msg.twist.twist.angular.z
+    pub.publish(new_msg)
 
 def get_user_input(timeout):
     i,_,_=select.select([sys.stdin],[],[],timeout)
