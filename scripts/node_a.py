@@ -28,10 +28,11 @@ def get_user_input(timeout):
         return None
 
 def action_client():
-    act_cl=actionlib.SimpleActionClient('/reaching_goal',assignment_2_2023.msg.PlanningAction)
-    act_cl.wait_for_server()
     while not rospy.is_shutdown():
-        time.sleep(4)
+
+    	act_cl=actionlib.SimpleActionClient('/reaching_goal',assignment_2_2023.msg.PlanningAction)
+    	act_cl.wait_for_server()
+	time.sleep(2)
         
         print("\nEnter the x and y coordinates of the goal")
         try:
@@ -63,8 +64,9 @@ def main():
     rospy.init_node("actionclient")
     pub = rospy.Publisher("/pos_and_vel", Custom, queue_size=10)
     rospy.Subscriber("/odom", Odometry, callback)
-    action_client()
-    rospy.spin()
+    while not rospy.is_shutdown():
+    	action_client()
+    	rospy.spin()
 
 
 if __name__=="__main__":

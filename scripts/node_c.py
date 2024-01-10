@@ -41,7 +41,7 @@ def serv_callback(req):
     d=math.sqrt((x-new_msg.x)**2+(y-new_msg.y)**2) 
     ave_v_x=sum(vel_x)/len(vel_x) 
     ave_v_z=sum(vel_z)/len(vel_z) 
-    print("Distance from the goal: ", d)
+    print("Distance from the goal: ")
     print("Average linear velocity along x: ", ave_v_x)
     print("Average angular velocity along z: ", ave_v_z)
     return Dist_ave_velResponse(d,ave_v_x,ave_v_z)
