@@ -18,7 +18,7 @@ global new_msg
 vel_x=[]
 vel_z=[]
 
-window_size=10 #poi modifica perché va introdotta nel launch file!!!!
+window_size=10
 
 def callback(msg):
     global vel_x, vel_z, new_msg
@@ -64,14 +64,4 @@ if __name__=="__main__":
         main()
     except rospy.ROSInterruptException:
         print("Program interrupted before completion", file=sys.stderr)
-  
-        
-        
-        
-      
-      
-      
-      
-      
-      
-      
+

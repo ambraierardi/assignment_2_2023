@@ -12,7 +12,6 @@ import actionlib.msg
 import time
 
 def callback(msg):
-    global pub
     new_msg=Custom()
     new_msg.x = msg.pose.pose.position.x
     new_msg.y = msg.pose.pose.position.y
@@ -28,14 +27,14 @@ def get_user_input(timeout):
         return None
 
 def action_client():
-    while not rospy.is_shutdown():
 
-        act_cl=actionlib.SimpleActionClient('/reaching_goal',assignment_2_2023.msg.PlanningAction)
-        act_cl.wait_for_server()
-        time.sleep(2)
-        
-        print("\nEnter the x and y coordinates of the goal")
-        try:
+    act_cl=actionlib.SimpleActionClient('/reaching_goal',assignment_2_2023.msg.PlanningAction)
+    act_cl.wait_for_server()
+    time.sleep(2)
+    while not rospy.is_shutdown():   
+    	time.sleep(2)
+    	print("\nEnter the x and y coordinates of the goal")
+    	try:
             x=float(input("x: "))
             y=float(input("y: "))
             
@@ -49,15 +48,15 @@ def action_client():
         rospy.set_param("des_pos_x",x)
         rospy.set_param("des_pos_y",y)
         print("\nIf you want to cancel the goal, press 'c': ")
+        
         feedback=assignment_2_2023.msg.PlanningFeedback()   
-        while feedback.stat!="Target reached!":
+        while act_cl.get_state() != actionlib.GoalStatus.SUCCEEDED:
+        #while feedback.stat!="Target reached!":
             user_input=get_user_input(1)
             if user_input=='c':
                 act_cl.cancel_goal()
                 rospy.loginfo("Goal cancelled")
                 break
-        if feedback.stat=="Target reached!":
-            break
         
 def main():
     global pub
