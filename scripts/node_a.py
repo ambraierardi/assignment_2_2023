@@ -9,6 +9,7 @@ import sys
 import select
 import actionlib
 import actionlib.msg
+import time
 
 def callback(msg):
     global pub
@@ -30,11 +31,14 @@ def action_client():
     act_cl=actionlib.SimpleActionClient('/reaching_goal',assignment_2_2023.msg.PlanningAction)
     act_cl.wait_for_server()
     while not rospy.is_shutdown():
-        print("\nEnter the x and y coordinates of the goal")
-        try:
+    	time.sleep(4)
+    	
+    	print("\nEnter the x and y coordinates of the goal")
+    	try:
             x=float(input("x: "))
             y=float(input("y: "))
-        except ValueError:
+            
+	except ValueError:
             print("Invalid input")
             continue
         goal=assignment_2_2023.msg.PlanningGoal()
@@ -43,14 +47,6 @@ def action_client():
         act_cl.send_goal(goal)
         rospy.set_param("des_pos_x",x)
         rospy.set_param("des_pos_y",y)
-        #prova:
-        desx=rospy.get_param("des_pos_x")
-        desy=rospy.get_param("des_pos_y")
-        rospy.loginfo(desx)
-        rospy.loginfo(desy)
-        #fine prova
-
-
         print("\nIf you want to cancel the goal, press 'c': ")
         feedback=assignment_2_2023.msg.PlanningFeedback()   
         while feedback.stat!="Target reached!":
@@ -59,6 +55,8 @@ def action_client():
                 act_cl.cancel_goal()
                 rospy.loginfo("Goal cancelled")
                 break
+        if feedback.stat=="Target reached!":
+            break
         
 def main():
     global pub
