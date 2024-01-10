@@ -32,9 +32,9 @@ def action_client():
     act_cl.wait_for_server()
     time.sleep(2)
     while not rospy.is_shutdown():   
-    	time.sleep(2)
-    	print("\nEnter the x and y coordinates of the goal")
-    	try:
+        time.sleep(2)
+        print("\nEnter the x and y coordinates of the goal")
+        try:
             x=float(input("x: "))
             y=float(input("y: "))
             
