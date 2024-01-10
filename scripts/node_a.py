@@ -31,14 +31,14 @@ def action_client():
     act_cl=actionlib.SimpleActionClient('/reaching_goal',assignment_2_2023.msg.PlanningAction)
     act_cl.wait_for_server()
     while not rospy.is_shutdown():
-    	time.sleep(4)
-    	
-    	print("\nEnter the x and y coordinates of the goal")
-    	try:
+        time.sleep(4)
+        
+        print("\nEnter the x and y coordinates of the goal")
+        try:
             x=float(input("x: "))
             y=float(input("y: "))
             
-	except ValueError:
+        except ValueError:
             print("Invalid input")
             continue
         goal=assignment_2_2023.msg.PlanningGoal()

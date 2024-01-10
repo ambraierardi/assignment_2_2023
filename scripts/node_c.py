@@ -30,8 +30,8 @@ def callback(msg):
     vel_x.append(new_msg.v_x)
     vel_z.append(new_msg.v_z)
     if len(vel_x)>window_size:
-      	vel_x.pop(0)
-      	vel_z.pop(0)
+        vel_x.pop(0)
+        vel_z.pop(0)
 
 
 def serv_callback(req):
@@ -61,9 +61,9 @@ def main():
 
 if __name__=="__main__":
     try:
-      	main()
+        main()
     except rospy.ROSInterruptException:
-      	print("Program interrupted before completion", file=sys.stderr)
+        print("Program interrupted before completion", file=sys.stderr)
   
         
         
