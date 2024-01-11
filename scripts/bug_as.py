@@ -11,7 +11,6 @@ import assignment_2_2023.msg
 from tf import transformations
 from std_srvs.srv import *
 import time
-import Data.msg
 
 srv_client_go_to_point_ = None
 srv_client_wall_follower_ = None
