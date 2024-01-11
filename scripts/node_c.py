@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+# import all necessary stuff
+
 import rospy
 from assignment_2_2023.srv import Last_target, Last_targetResponse
 from assignment_2_2023.msg import Custom
@@ -10,8 +12,9 @@ import actionlib.msg
 import math
 from geometry_msgs.msg import Pose, Twist, Point
 from nav_msgs.msg import Odometry
+import time
 
-
+d=0.0
 global vel_x
 global vel_z
 global new_msg
@@ -40,21 +43,16 @@ def serv_callback(req):
     y=rospy.get_param('des_pos_y')
     d=math.sqrt((x-new_msg.x)**2+(y-new_msg.y)**2) 
     ave_v_x=sum(vel_x)/len(vel_x) 
-    ave_v_z=sum(vel_z)/len(vel_z) 
-    print("Distance from the goal: ")
+    ave_v_z=sum(vel_z)/len(vel_z)
+    print("Distance from the target: ",d)
     print("Average linear velocity along x: ", ave_v_x)
     print("Average angular velocity along z: ", ave_v_z)
     return Dist_ave_velResponse(d,ave_v_x,ave_v_z)
     
 def main():
-
-    
     rospy.init_node('pos_vel_srv')
-    
     rospy.Subscriber("/pos_and_vel", Custom, callback)
-    
-    rospy.Service('dist_ave_vel', Dist_ave_vel, serv_callback)
-
+    rospy.Service('dist_ave_vel', Dist_ave_vel, serv_callback)  
     rospy.spin()
     
 

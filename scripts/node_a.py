@@ -1,4 +1,7 @@
 #! /usr/bin/env python
+
+# import all necessary stuff
+
 import rospy
 from std_srvs.srv import *
 from geometry_msgs.msg import Pose, Twist, Point
@@ -30,9 +33,7 @@ def action_client():
 
     act_cl=actionlib.SimpleActionClient('/reaching_goal',assignment_2_2023.msg.PlanningAction)
     act_cl.wait_for_server()
-    time.sleep(2)
     while not rospy.is_shutdown():   
-        time.sleep(2)
         print("\nEnter the x and y coordinates of the goal")
         try:
             x=float(input("x: "))
@@ -48,10 +49,7 @@ def action_client():
         rospy.set_param("des_pos_x",x)
         rospy.set_param("des_pos_y",y)
         print("\nIf you want to cancel the goal, press 'c': ")
-        
-        feedback=assignment_2_2023.msg.PlanningFeedback()   
         while act_cl.get_state() != actionlib.GoalStatus.SUCCEEDED:
-        #while feedback.stat!="Target reached!":
             user_input=get_user_input(1)
             if user_input=='c':
                 act_cl.cancel_goal()
@@ -59,6 +57,7 @@ def action_client():
                 break
         
 def main():
+
     global pub
     rospy.init_node("actionclient")
     pub = rospy.Publisher("/pos_and_vel", Custom, queue_size=10)
