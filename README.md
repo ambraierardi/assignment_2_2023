@@ -39,9 +39,13 @@ To retrieve the distance of the robot from the current target and its average li
 
 Nodes
 ----------------------
-The first implemented node was `node_a.py`, performing an *action client* to ask the user to give in input the coordinated of the desired position, where the robot should go.  
-In this node, first the a publisher is created, in order to publish the Custom message, 
-
+### Action Client ###
+The first implemented node was `node_a.py`, carrying out an *action client* to ask the user to give in input the coordinates of the desired position, which is where the robot should go.  
+In this node, first the publisher is created, in order to publish the message of type *Custom* on a new topic called `/pos_and_vel`, exploiting the information of position and velocity published on the topic `/odom`, obtained by the subscriber, defined right after the publisher, in the main function.  
+After the user put a valid goal position, which means a pair of numbers, the goal is sent to the action server, and the robot starts moving.  
+At this point, the user is free to cancel the goal at any time, before the desired position is reached, by entering 'c' on the shell.  
+In any case, whether the goal has been cancelled or has been reached correctly, the user can enter a new input.  
+To stop the program, the user should press 'ctrl + c' on the shell.
 
 Flowchart of the project
 ----------------------
