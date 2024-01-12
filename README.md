@@ -20,7 +20,7 @@ sudo apt-get -y install xterm
  in order to get a dedicated terminal for every printing node.  
 At this point, clone the repository by typing 
 ```
-git clone https://github.com/ambraierardi/assignment2_rt1
+git clone https://github.com/ambraierardi/assignment2_rt1.git
 ```  
 Now, simply run the following line: 
 ```
