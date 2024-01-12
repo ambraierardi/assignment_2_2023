@@ -7,9 +7,20 @@ The goal of this project was to implement an action client for the given action 
 Installing and running
 ----------------------
 
-The simulator requires the ROS installation, following the instructions at this link: https://wiki.ros.org/noetic/Installation/Ubuntu, and the terminal emulator *xterm*, running the following command on the shell: `sudo apt-get -y install xterm`, in order to get a dedicated terminal for every printing node.  
-At this point, clone the repository by typing `git clone https://github.com/ambraierardi/assignment2_rt1`.  
-Now, simply run the following line: `roslaunch assignment_2_2023 assignment1.launch`on the downloaded folder and follow the instructions on the shell.
+The simulator requires the ROS installation, following the instructions at this link: https://wiki.ros.org/noetic/Installation/Ubuntu, and the terminal emulator *xterm*, running the following command on the shell: 
+```
+sudo apt-get -y install xterm
+```
+ in order to get a dedicated terminal for every printing node.  
+At this point, clone the repository by typing 
+```
+git clone https://github.com/ambraierardi/assignment2_rt1
+```  
+Now, simply run the following line: 
+```
+roslaunch assignment_2_2023 assignment1.launch
+```
+on the downloaded folder and follow the instructions on the shell.
 
 
 ### ROS ###
@@ -52,11 +63,19 @@ To stop the program, the user should press 'ctrl + c' on the shell.
 ### Last Target Service Node ###
 The second implemented node is `node_b.py`, executing a service node to get the coordinates of the last target.  
 First, a service is created, with the name `last_target`, of type *Last_target*, whose callback function fethces the interested parameters, which are `'des_pos_x'` and `'des_pos_y'`, with the ROS command `get_param`, since in the first node they are filled with the goal throught `set_command`.  
-In order to get the last target coordinates, it's necessary to call the service with the following line `rosservice call /last_target`, in another tab.
+In order to get the last target coordinates, it's necessary to call the service with the following line 
+```
+rosservice call /last_target
+```
+ in another tab.
 ### Distance and average velocity service node ###
 In the last node, `node_c.py`, it was created a subscriber to the topic published by the first node, `/pos_and_vel`, in order to get the current position and velocity of the robot, and to compute the distance from the target, the average linear velocity along x and angular velocity about the z axis.  
 After the subscriber, a service is created, named `dist_ave_vel`, of type *Dist_ave_vel*, whose callback function computes the distance from the target, as an euclidean distance between the target itself and the last registred goal, the average linear velocity, as the sum of the stored linear velocities in a list of length equal to the parameter `'window_size'`, introduced in the launch file, over the window size, and finally the average angular velocity, computed in the same way as the linear one, using the previously stored last angular velocities.  
-When the service is called, with the command `rosservice call /pos_vel_srv` in another tab, these three parameters are printed on the shell.
+When the service is called, with the command 
+```
+rosservice call /pos_vel_srv
+```
+ in another tab, these three parameters are printed on the shell.
 
 
 Flowchart of the project
