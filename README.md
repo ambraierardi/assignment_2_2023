@@ -88,7 +88,7 @@ The launch file, named `assignment1.launch`, is a file necessary to launch all t
 
 Flowchart of the project
 ----------------------
-![Flowchart](Flowchart.drawio.png)
+![Flowchart](Flowchart.png)
 
 Rosgraph of the processes
 ----------------------
