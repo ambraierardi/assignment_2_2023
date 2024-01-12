@@ -72,10 +72,10 @@ In order to get the last target coordinates, it's necessary to call the service 
 rosservice call /last_target
 ```
  in another tab.  
- It's possible to notice in the rosgraph below, that the /last_target_node does not subscribe to any topic, and neither publishes to any topic: this is correct, since in the code of the node it is only implemented a sevice.
+ It's possible to notice in the rosgraph below, that the `/last_target_node` does not subscribe to any topic, and neither publishes to any one: this is correct, since in the code of the node it is only implemented a sevice.
 ### Distance and average velocity service node ###
 In the last node, `node_c.py`, it was created a subscriber to the topic published by the first node, `/pos_and_vel`, in order to get the current position and velocity of the robot, and to compute the distance from the target, the average linear velocity along x and angular velocity about the z axis.  
-After the subscriber, a service is created, named `dist_ave_vel`, of type *Dist_ave_vel*, whose callback function computes the distance from the target, as an euclidean distance between the target itself and the current robot's position, the average linear velocity, as the sum of the stored linear velocities in a list of length equal to the parameter `'window_size'`, introduced in the launch file, over the window size, and finally the average angular velocity, computed in the same way as the linear one, using the previously stored last angular velocities.  
+After the subscriber, a service is created, named `dist_ave_vel`, of type *Dist_ave_vel*, whose callback function computes the distance from the target, as the euclidean distance between the target itself and the current robot's position, the average linear velocity, as the sum of the last stored linear velocities in a list of length equal to the parameter `'window_size'`, introduced in the launch file, over the window size, and finally the average angular velocity, computed in the same way as the linear one, using the previously stored last angular velocities.  
 When the service is called, with the command 
 ```
 rosservice call /dist_ave_vel
@@ -84,7 +84,7 @@ in another tab, these three parameters are printed on the shell.
 
 Launch file
 ----------------------
-The launch file, named `assignment1.launch`, is a file necessary to launch all the nodes at the same time.
+The launch file, named `assignment1.launch`, is a file necessary to launch all the nodes at the same time, through which the parameter of the `'window_size'` is set.
 
 Flowchart of the project
 ----------------------
