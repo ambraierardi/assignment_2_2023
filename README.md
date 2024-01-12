@@ -81,7 +81,8 @@ When the service is called, with the command
 ```
 rosservice call /dist_ave_vel
 ```
-in another tab, these three parameters are printed on the shell.
+in another tab, these three parameters are printed on the shell.  
+This node subscribes only to the `/pos_and_vel` topic, as it is possible to see in the rosgraph.
 
 Launch file
 ----------------------
