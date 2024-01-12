@@ -62,6 +62,7 @@ The first implemented node was `node_a.py`, carrying out an *action client* to a
 In this node, first the publisher is created, in order to publish the message of type *Custom* on a new topic called `/pos_and_vel`, exploiting the information of position and velocity published on the topic `/odom`, obtained by the subscriber, defined right after the publisher, in the main function.  
 After the user puts a valid goal position, which means a pair of numbers, the goal is sent to the action server, and the robot starts moving.  
 At this point, the user is free to cancel the goal at any time, before the desired position is reached, by entering 'c' on the shell.  
+The check on whether the goal has been already reached or not is performed through the status of the goal.
 In any case, whether the goal has been cancelled or has been reached correctly, the user can enter a new input.  
 To stop the program, the user should press 'ctrl + c' on the shell.
 ### Last Target Service Node ###
