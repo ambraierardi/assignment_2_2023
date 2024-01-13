@@ -37,7 +37,7 @@ If something goes wrong, just make sure the ROS workspace is properly sources, b
 ```
 source devel/setup.bash
 ```
-on the workspace, then repeat the cloning procedure.
+on the workspace, then repeat from the `catkin_make` procedure.
 
 Custom message
 ----------------------
