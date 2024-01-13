@@ -19,7 +19,7 @@ sudo apt-get -y install xterm
 ```
  in order to get a dedicated terminal for every printing node.    
 In the workspace, create an `src` folder.
-At this point, clone the repository by typing 
+At this point, clone the repository in this folder by typing 
 ```
 git clone https://github.com/ambraierardi/assignment_2_2023.git
 ```
