@@ -17,16 +17,27 @@ The simulator requires the ROS installation, for which at the following link is 
 ```
 sudo apt-get -y install xterm
 ```
- in order to get a dedicated terminal for every printing node.  
+ in order to get a dedicated terminal for every printing node.    
+In the workspace, create an `src` folder.
 At this point, clone the repository by typing 
 ```
-git clone https://github.com/ambraierardi/assignment2_rt1.git
-```  
+https://github.com/ambraierardi/assignment_2_2023.git)
+```
+and proceed typing 
+```
+catkin_make
+```
+on the workspace.
 Now, simply run the following line: 
 ```
 roslaunch assignment_2_2023 assignment1.launch
 ```
-on the downloaded folder and follow the instructions on the shell.
+on the downloaded folder and follow the instructions on the shell.  
+If something goes wrong, just make sure the ROS workspace is properly sources, by typing 
+```
+source devel/setup.bash
+```
+on the workspace, then repeat the cloning procedure.
 
 Custom message
 ----------------------
