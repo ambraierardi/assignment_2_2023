@@ -21,7 +21,7 @@ sudo apt-get -y install xterm
 In the workspace, create an `src` folder.
 At this point, clone the repository by typing 
 ```
-https://github.com/ambraierardi/assignment_2_2023.git)
+https://github.com/ambraierardi/assignment_2_2023.git
 ```
 and proceed typing 
 ```
