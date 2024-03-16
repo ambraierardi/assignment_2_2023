@@ -5,7 +5,7 @@
     <param name="des_pos_y" value="1.0"/>
     <param name="window_size" value="20"/>
     <node pkg="assignment_2_2023" type="wall_follow_service.py" name="wall_follower" />
-    <node pkg="assignment_2_2023" type="node_a.py" name="actionclient" launch-prefix="xterm -e"/>
+    <node pkg="assignment_2_2023" type="exam_assignment2.py" name="actionclient" launch-prefix="xterm -e"/>
     <node pkg="assignment_2_2023" type="node_b.py" name="last_target_node" />
     <node pkg="assignment_2_2023" type="node_c.py" name="pos_vel_srv" launch-prefix="xterm -e"/>
     <node pkg="assignment_2_2023" type="go_to_point_service.py" name="go_to_point"  />

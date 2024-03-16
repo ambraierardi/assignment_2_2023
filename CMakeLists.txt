@@ -58,6 +58,9 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
    Custom.msg
+   Feet.msg
+   Goal.msg
+   Distance.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -65,6 +68,8 @@ add_message_files(
    FILES
    Dist_ave_vel.srv
    Last_target.srv
+   Cancel.srv
+   Left_dist.srv
  )
 
 ## Generate actions in the 'action' folder
